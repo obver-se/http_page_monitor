@@ -24,17 +24,17 @@ from http_page_watcher import PageWatcher
 
 # A function that we will use to compare the old request data to the new request data
 def compare_3rd_character(old, new):
-	if old[2] != new[2]:
-		return "The third character is different"
-		
-	# Return None when no changes are detected
-	return None
+    if old[2] != new[2]:
+        return "The third character is different"
+	
+    # Return None when no changes are detected
+    return None
 
 # Set up a PageWatcher for example.com
 pw = PageWatcher("https://example.com",
-				time_interval=30, # Check every 30 seconds
-				comparison_function=compare_3rd_character, # Compare the third character of this page
-				alert_function=lamda url, alert: print(url + ", " + alert) # Use the stdout to for alerts
+                 time_interval=30, # Check every 30 seconds
+                 comparison_function=compare_3rd_character, # Compare the third character of this page
+                 alert_function=lamda url, alert: print(url + ", " + alert) # Use the stdout to for alerts
 )
 
 # Start it up!
@@ -52,7 +52,7 @@ generated_comparison_function = html_text_comparison(selector="h1")
 
 # Set up a PageWatcher for example.com
 pw = PageWatcher("https://example.com",
-				comparison_function=generated_comparison_function
+                 comparison_function=generated_comparison_function
 )
 
 # Start it up!
@@ -73,7 +73,7 @@ page_watchers.append(PageWatcher("https://example.com/2"))
 page_watchers.append(PageWatcher("https://example.com/3"))
 
 wm = WatcherManager(page_watchers, 
-				    alert_function=lambda url, alert: print(url + ", " + alert)
+                    alert_function=lambda url, alert: print(url + ", " + alert)
 )
 
 # Start all the watchers!
