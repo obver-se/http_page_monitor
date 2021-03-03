@@ -1,3 +1,4 @@
+[![Python application](https://github.com/obver-se/http_page_monitor/actions/workflows/python-app.yml/badge.svg)](https://github.com/obver-se/http_page_monitor/actions/workflows/python-app.yml)
 # http\_page\_watcher
 **http\_page\_watcher** is a highpowered website monitor. It allows for several levels of granularity in the way that changes are found, reported and detected. By default you can just throw a url into the PageWatcher object and it will print whenever any change is detected to the url, but provide a comparison function and you can compare and precisely as a single html element.
 
