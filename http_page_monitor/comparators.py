@@ -1,6 +1,6 @@
 """ Functions that generate comparitor functions that
     can be then used to compare the HTML of two pages"""
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup
 
 
 def remove_whitespace(string):
@@ -27,7 +27,8 @@ def remove_attributes_from_soup(soup):
 
 
 def html_text_comparison(selector=None, case_sensitive=True,
-                    ignore_whitespace=False):
+                         ignore_whitespace=False,
+                         strip_strings=True):
 
     """ This comparison function generator checks if
         the text of the selected elements have changed"""
@@ -43,6 +44,12 @@ def html_text_comparison(selector=None, case_sensitive=True,
         else:
             old_text = [old_soup.get_text()]
             new_text = [new_soup.get_text()]
+
+        if strip_strings:
+            old_text = \
+                [text.strip() for text in old_text]
+            new_text = \
+                [text.strip() for text in new_text]
 
         compare_old_text = old_text[:]
         compare_new_text = new_text[:]
