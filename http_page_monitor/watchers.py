@@ -10,8 +10,8 @@ import requests
 
 class PageWatcher (Thread):
     """ Watches a single page for changes """
-    def __init__(self, url, time_interval=120, 
-    	         comparison_function=None,
+    def __init__(self, url, time_interval=120,
+                 comparison_function=None,
                  ignore_errors=True,
                  alert_function=logging.info):
 
@@ -93,7 +93,9 @@ class PageWatcher (Thread):
     def request_page(self):
         """ Request the page that we are
             pointed to and return the data """
-        logging.debug('Requesting %s', self.url)
+        logging.info('%s Requesting %s',
+                     str(datetime.now()),
+                     self.url)
         try:
             return requests.get(self.url,
                                 headers={'User-agent':
@@ -159,7 +161,3 @@ class WatcherManager:
         self.running = False
         for watcher in self.watchers:
             watcher.stop()
-
-
-# logging.basicConfig(level=logging.INFO)
-
